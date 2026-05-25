@@ -1,0 +1,9 @@
+{
+  "features": {
+    "ghcr.io/hspaans/devcontainer-features/pytest:2": {
+      "version": "2.0.0",
+      "resolved": "ghcr.io/hspaans/devcontainer-features/pytest@sha256:6ce02b88a2d4e894c9f4d3588df31723ed8978ed1da4c9561aec768d1aaf295b",
+      "integrity": "sha256:6ce02b88a2d4e894c9f4d3588df31723ed8978ed1da4c9561aec768d1aaf295b"
+    }
+  }
+}
