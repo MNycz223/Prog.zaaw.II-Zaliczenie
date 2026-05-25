@@ -1,21 +1,18 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-	"name": "Node.js & TypeScript",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:4-24-trixie",
-
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+	"name": "Angular Frontend with Backend & Database",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "frontend",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [4200],
+	"forwardPorts": [4200, 8000, 5432],
 
-	"appPort": [
-		"4200:4200"
-	],
+	// "appPort": [
+	// 	"4200:4200"
+	// ],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "npm install -g @angular/cli",
 	"customizations": {
 		"vscode": {
