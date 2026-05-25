@@ -5,15 +5,17 @@ from datetime import datetime
 from .database import get_db
 from .nbp import fetch_nbp_data
 from api import crud
+from .schemas import CurrencyResponse, CurrencyListResponse, FetchCurrenciesResponse 
 
 app = FastAPI(title="Currencies API")
 
-@app.get("/currencies")
+
+@app.get("/currencies", response_model=list[CurrencyListResponse])
 def get_currencies(db: Session = Depends(get_db)):
     return crud.get_currencies(db)
 
 
-@app.get("/currencies/{date}")
+@app.get("/currencies/{date}", response_model=list[CurrencyResponse])
 def get_currencies_by_date(
     date: str,
     db: Session = Depends(get_db)
@@ -32,7 +34,8 @@ def get_currencies_by_date(
 
     return crud.get_currencies_by_date(db, parsed_date)
 
-@app.post("/currencies/fetch")
+
+@app.post("/currencies/fetch", response_model=FetchCurrenciesResponse)
 def fetch_currencies(db: Session = Depends(get_db)):
     data = fetch_nbp_data()
 
