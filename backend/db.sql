@@ -8,3 +8,6 @@ CREATE TABLE currencies (
 
 CREATE INDEX idx_currency_date
 ON currencies(rate_date);
+
+ALTER TABLE currencies 
+ADD CONSTRAINT unique_record UNIQUE (code, rate, rate_date);
