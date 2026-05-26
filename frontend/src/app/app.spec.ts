@@ -38,7 +38,7 @@ describe('App', () => {
     fixture.detectChanges(); // Wywołuje ngOnInit -> pierwsze pobranie danych (GET)
 
     // Obsługa automatycznego strzału GET z ngOnInit()
-    const req = httpMock.expectOne('http://backend:8000/currencies/2026-05-25');
+    const req = httpMock.expectOne('http://localhost:8000/currencies/2026-05-25');
     req.flush(mockRates);
   });
 
@@ -107,11 +107,11 @@ describe('App', () => {
     
     fetchBtn.nativeElement.click();
 
-    const postReq = httpMock.expectOne('http://backend:8000/currencies/fetch');
+    const postReq = httpMock.expectOne('http://localhost:8000/currencies/fetch');
     expect(postReq.request.method).toBe('POST');
     postReq.flush(mockFetchResponse);
 
-    const getReq = httpMock.expectOne('http://backend:8000/currencies/2026-05-25');
+    const getReq = httpMock.expectOne('http://localhost:8000/currencies/2026-05-25');
     getReq.flush(mockRates);
     fixture.detectChanges();
 
@@ -128,10 +128,10 @@ describe('App', () => {
 
     expect(component.isLoading).toBe(true);
 
-    const postReq = httpMock.expectOne('http://backend:8000/currencies/fetch');
+    const postReq = httpMock.expectOne('http://localhost:8000/currencies/fetch');
     postReq.flush(mockFetchResponse);
 
-    const getReq = httpMock.expectOne('http://backend:8000/currencies/2026-05-25');
+    const getReq = httpMock.expectOne('http://localhost:8000/currencies/2026-05-25');
     getReq.flush(mockRates);
 
     expect(component.isLoading).toBe(false);
@@ -143,7 +143,7 @@ describe('App', () => {
     
     fetchBtn.nativeElement.click();
 
-    const postReq = httpMock.expectOne('http://backend:8000/currencies/fetch');
+    const postReq = httpMock.expectOne('http://localhost:8000/currencies/fetch');
     postReq.error(new ErrorEvent('Network error'));
 
     fixture.detectChanges();
@@ -160,7 +160,7 @@ describe('App', () => {
     component.selectedDate = '2026-05-24';
     component.loadRates();
 
-    const getReq = httpMock.expectOne('http://backend:8000/currencies/2026-05-24');
+    const getReq = httpMock.expectOne('http://localhost:8000/currencies/2026-05-24');
     getReq.flush(newMockRates);
     fixture.detectChanges();
 

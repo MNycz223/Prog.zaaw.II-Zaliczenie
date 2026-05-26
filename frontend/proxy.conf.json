@@ -1,7 +1,0 @@
-{
-  "/currencies": {
-    "target": "http://backend:8000",
-    "secure": false,
-    "changeOrigin": true
-  }
-}

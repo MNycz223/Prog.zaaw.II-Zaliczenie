@@ -12,7 +12,7 @@ import { CurrencyRate, FetchResponse } from './currency.model';
   styleUrls: ['./app.css']
 })
 export class App implements OnInit {
-  private apiUrl = '/currencies';
+  private apiUrl = 'http://localhost:8000/currencies';
 
   allRates: CurrencyRate[] = [];
 
